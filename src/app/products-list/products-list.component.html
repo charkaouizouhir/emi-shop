@@ -1,8 +1,7 @@
-<!--<app-navbar (selectedCategory)="showProductsByCategory($event)"></app-navbar> -->
-<div class="row row-cols-1 row-cols-md-4 g-4 py-5">
+<div class="row row-cols-1 row-cols-md-4 g-4 py-5 " style="margin-left: 3px; margin-right: 3px;">
     @for(p of products;track p.id){
       <div class="col">
-        <app-product-item [product]="p" (productSelected)="addToCart($event)"></app-product-item>
+        <app-product-item [product]="p"></app-product-item>
       </div>
     }
 </div>

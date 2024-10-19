@@ -1,0 +1,9 @@
+select {
+  border: none; /* Removes the border */
+  box-shadow: none; /* Removes any shadow */
+}
+
+select:focus {
+  outline: none; /* Removes the default focus outline */
+  box-shadow: none; /* Ensures no shadow on focus */
+}

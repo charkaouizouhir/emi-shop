@@ -1,12 +1,11 @@
-<div class="card" style="width: 100%; border: 1px solid green">
-  <img [src]="product.imgURL" class="card-img-top" alt="{{product.name}}">
+<div class="card" style="width: 100%">
+  <img [src]="product.imgURL" class="card-img-top" alt="{{product.name}}" (click)="onClickProduct(product)">
   <div class="card-body">
-    <div class="card-title">{{product.name}}</div>
-    <h5 >price : {{product.pric}} DH</h5>
+    <div class="card-title" (click)="onClickProduct(product)">{{product.name}}</div>
+    <h5 (click)="onClickProduct(product)">price : {{product.price}} $</h5>
     <h5 [ngStyle]="{color:getColor(product.stock)}">{{getState(product.stock)}}</h5>
+    <div style="display: flex; justify-content: center;">
+      <button [disabled]="product.stock <= 0" class="btn btn-warning" (click)="addToCart()">Add To Cart</button>
+    </div>
   </div>
-  <button [disabled]="product.stock <= 0" class="btn btn-success" (click)="addToCart()">Add To Cart</button>
 </div>
-
-
-

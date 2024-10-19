@@ -41,7 +41,7 @@ export class ProductsListComponent implements OnInit {
       this.products = [];
 
       this.productsAPI.forEach(p => {
-        const prod = new Product(p.id, p.title, p.images[0], p.price, p.category, p.description, p.stock);
+        const prod = new Product(p.id, p.title, p.images[0], p.price, p.category, p.description, p.stock,p.rating,p.images);
         this.products.push(prod);
       });
       this.allProducts = [...this.products];
@@ -64,21 +64,7 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
-  addToCart(p: Product) {
-    let found = false;
-    for (let i = 0; i < this.productLigns.length; i++) {
-      if (this.productLigns[i].product.id === p.id) {
-        this.productLigns[i].qte++;
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      const productLigne = new ProductLine(p, 1);
-      this.productLigns.push(productLigne);
-    }
-    p.stock--;
-  }
+
 
   showProductsByCategory() {
     if (this.selectedCategory && this.selectedCategory !== 'All') {
@@ -86,7 +72,7 @@ export class ProductsListComponent implements OnInit {
         this.products = [];
         this.productsAPI = data.products;
         this.productsAPI.forEach(p => {
-          const prod = new Product(p.id, p.title, p.images[0], p.price, p.category, p.description, p.stock);
+          const prod = new Product(p.id, p.title, p.images[0], p.price, p.category, p.description, p.stock,p.rating,p.images);
           this.products.push(prod);
         });
       }, error => {
@@ -96,6 +82,7 @@ export class ProductsListComponent implements OnInit {
       this.products = [...this.allProducts];
     }
   }
+
 
   onSearchKeyword(keyword: string | null) {
     if (keyword && keyword.trim() !== "") {

@@ -12,7 +12,6 @@ export class ShareDataService {
   searchKeyword$=this.searchKeywordSource.asObservable();
   setSelectedCategory(category: string) {
     this.selectedCategorySource.next(category);
-
   }
 
   setSearchKeyword(keyword: string) {

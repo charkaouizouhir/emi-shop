@@ -3,6 +3,8 @@ import {CategoryService} from '../services/category.service';
 import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ShareDataService} from '../services/share-data.service';
+import {Router, RouterLink} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,8 @@ import {ShareDataService} from '../services/share-data.service';
   imports: [
     NgForOf,
     NgIf,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -19,7 +22,7 @@ export class NavbarComponent implements OnInit{
   categories: any[] = [];
   selectedCategory!:string;
   keyword!:string;
-  constructor(private categoryService: CategoryService,private shareDataService:ShareDataService) {}
+  constructor(private categoryService: CategoryService,private shareDataService:ShareDataService,public authService : AuthService) {}
   ngOnInit(): void {
       this.categoryService.getAllCategories().subscribe((data:any)=>{
         this.categories=data;
@@ -37,6 +40,8 @@ export class NavbarComponent implements OnInit{
   search(){
     this.shareDataService.setSearchKeyword(this.keyword);
   }
+
+
 
 
 }

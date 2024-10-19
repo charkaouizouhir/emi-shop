@@ -8,7 +8,7 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
   getAllProducts(){
-    return this.http.get("https://dummyjson.com/products");
+    return this.http.get("https://dummyjson.com/products")
   }
 
   getProductByCategory(keyword:string){

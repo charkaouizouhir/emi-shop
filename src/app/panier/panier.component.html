@@ -1,1 +1,28 @@
-<p>panier works!</p>
+<table class="table">
+  <thead class="table-light">
+  <tr>
+    <th>Designation</th>
+    <th>Prix</th>
+    <th>Quantite</th>
+    <th>Totale</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for(dp of productLigns;let i=$index;track i){
+      <tr>
+        <td>{{dp.product.name}} $</td>
+        <td>{{dp.product.price}} $</td>
+        <td>{{dp.qte}}</td>
+        <td>{{dp.qte*dp.product.price}} $</td>
+      </tr>}
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Totale : {{getTotale()}}</td>
+  </tr>
+  </tbody>
+</table>
+<div class="text-end">
+  <button class="btn btn-primary me-3" (click)="onCheckout()">Checkout</button>
+</div>
